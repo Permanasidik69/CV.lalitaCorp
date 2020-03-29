@@ -28,6 +28,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('/Form-Order-Barang','Form_Order_Controller');
 
     //PERSEDIAAN BARANG
+    Route::resource('/Stok-Barang-ADV','MasterData_ADV_Controller');
+    Route::resource('/Stok-Barang-HOBIMEN','MasterData_HOBIMEN_Controller');
+    Route::resource('/Stok-Barang-OROKKIDS','MasterData_OROKKIDS_Controller');
+
     
  
 });

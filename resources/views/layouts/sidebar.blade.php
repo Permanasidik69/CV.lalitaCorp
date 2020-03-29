@@ -60,9 +60,9 @@
             </span>
           </a>
           <ul class="treeview-menu" style="display: none;">
-            <li><a href="{{ url('Stok-Barang-HOBIMEN') }}"><i class="fa fa-circle-o"></i> Stok Barang</a></li>
-            <li><a href="{{ url('Daftar-Kirim-Harian-HOBIMEN') }}"><i class="fa fa-circle-o"></i> Daftar Kirim Harian</a></li>
-            <li><a href="{{ url('Daftar-keluar-Harian-HOBIMEN') }}"><i class="fa fa-circle-o"></i> Daftar Keluar Harian</a></li>
+            <li><a href="{{ url('Stok-Barang-OROKKIDS') }}"><i class="fa fa-circle-o"></i> Stok Barang</a></li>
+            <li><a href="{{ url('Daftar-Kirim-Harian-OROKKIDS') }}"><i class="fa fa-circle-o"></i> Daftar Kirim Harian</a></li>
+            <li><a href="{{ url('Daftar-keluar-Harian-OROKKIDS') }}"><i class="fa fa-circle-o"></i> Daftar Keluar Harian</a></li>
           </ul>
         </li>
 
