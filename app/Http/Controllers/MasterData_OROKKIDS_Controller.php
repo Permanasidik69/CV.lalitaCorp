@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\M_MData_OROKKIDS;
+use App\Models\M_Supplier;
 
 class MasterData_OROKKIDS_Controller extends Controller
 {
@@ -29,6 +30,11 @@ class MasterData_OROKKIDS_Controller extends Controller
     public function create()
     {
         //
+        $title = 'Tambah Stok Barang OROKKIDS';
+        $supplier = M_Supplier::get();
+        $sku = date('ymds');
+
+        return view('masterdata/orokkids.add', compact('title', 'supplier', 'sku'));
     }
 
     /**
@@ -40,6 +46,23 @@ class MasterData_OROKKIDS_Controller extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'supplier'    => 'required',
+            'sku'         => 'required',
+            'nama_barang' => 'required',
+            'stok'        => 'required',
+            'minimal_stok'=> 'required',
+            'harga'       => 'required',
+        ]);
+
+        $data = $request->except(['_token']);
+        $data['created_at'] = date('Y-m-d H:i:s');
+        $data['updated_at'] = date('Y-m-d H:i:s');
+
+        M_MData_OROKKIDS::insert($data);
+
+        \Session::flash('sukses', 'Data Berhasil diTambahkan');
+        return redirect('Stok-Barang-OROKKIDS');
     }
 
     /**
@@ -62,6 +85,12 @@ class MasterData_OROKKIDS_Controller extends Controller
     public function edit($id)
     {
         //
+        $title = 'Edit Stok Barang OROKKIDS';
+        $supplier = M_Supplier::get();
+        //$sku = date('ymds');
+        $dt = M_MData_OROKKIDS::find($id);
+
+        return view('masterdata/orokkids.edit', compact('title', 'supplier','dt'));
     }
 
     /**
@@ -74,6 +103,23 @@ class MasterData_OROKKIDS_Controller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'supplier'    => 'required',
+            'sku'         => 'required',
+            'nama_barang' => 'required',
+            'stok'        => 'required',
+            'minimal_stok'=> 'required',
+            'harga'       => 'required',
+        ]);
+
+        $data = $request->except(['_token', '_method']);
+        //$data['created_at'] = date('Y-m-d H:i:s');
+        $data['updated_at'] = date('Y-m-d H:i:s');
+
+        M_MData_OROKKIDS::where('id', $id)->update($data);
+
+        \Session::flash('sukses', 'Data Berhasil diEdit');
+        return redirect('Stok-Barang-OROKKIDS');
     }
 
     /**
@@ -85,5 +131,14 @@ class MasterData_OROKKIDS_Controller extends Controller
     public function destroy($id)
     {
         //
+        try {
+            M_MData_OROKKIDS::where('id', $id)->delete();
+
+            \Session::flash('sukses','Data Berhasil diHapus');
+        } catch (Exception $e) {
+            \Session::flash('gagal', $e->getMessage());
+        }
+
+        return redirect('Stok-Barang-OROKKIDS');
     }
 }
