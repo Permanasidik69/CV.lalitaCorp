@@ -37,7 +37,7 @@
 
       <!-- modal hapus -->
  <div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-      <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-" role="document">
         <div class="modal-content bg-gradient-danger">
  
           <div class="modal-header">
