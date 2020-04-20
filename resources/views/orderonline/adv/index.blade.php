@@ -12,6 +12,29 @@
                 </p>
             </div>
             <div class="box-body">
+            <div class="table-responsive">
+                <table class="myTable">
+                <thead>
+                                <tr>
+                                    <th><center>No</th>
+                                    <th><center>Nama Barang</th>
+                                    <th><center>Nama Pelanggan</th>
+                                    <th><center>Harga</th>
+                                    <th><center>No Telepon</th>
+                                    <th><center>Alamat</th>
+                                    <th><center>Variasi</th>
+                                    <th><center>Notes</th>
+                                    <th><center>Qty</th>
+                                    <th><center>Payment Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                   
+                                </tr>
+                            </tbody>
+                </table>
+            </div>
                
             </div>
         </div>

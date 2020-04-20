@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                   <label>SKU</label>
-                  <input type="text" name="sku" class="form-control" value="ADV-{{ $sku }}" placeholder="SKU Barang" required autocomplete="off">
+                  <input type="text" name="sku" class="form-control" readonly value="ADV-{{ $sku }}" placeholder="SKU Barang" required autocomplete="off">
                 </div>
                 
                 <div class="form-group">

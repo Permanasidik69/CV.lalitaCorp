@@ -13,14 +13,13 @@
             <li><a href="{{ url('Order-Online-HOBIMEN') }}"><i class="fa fa-cart-plus"></i> Order Online HOBIMEN</a></li>
             <li><a href="{{ url('Order-Online-OROKKIDS') }}"><i class="fa fa-cart-plus"></i> Order Online OROKKIDS</a></li>
         </li>
-
-        <li class="header">ORDER BARANG</li>
-
-        <li><a href="{{ url('Data-Supplier') }}"><i class="fa fa-users"></i> Data Supplier</a></li>
-        <li><a href="{{ url('Form-Order-Barang') }}"><i class="fa fa-file-text"></i> Form Order Barang</a></li>
+       
 
         <li class="header">PERSEDIAAN BARANG</li>
          <!-- ADV -->
+         <li><a href="{{ url('Form-Order-Barang') }}"><i class="fa fa-file-text"></i> Form Order Barang</a></li>
+         <li><a href="{{ url('Data-Supplier') }}"><i class="fa fa-users"></i> Data Supplier</a></li>
+        
         <li class="treeview">
           <a href="">
             <i class="fa fa-folder-open"></i>
