@@ -50,8 +50,8 @@
                                     <th><center>Action</th>
                                     <th><center>No</th>
                                     <th><center>Supplier</th>
-                                    <th><center>Nama Barang</th>
                                     <th><center>SKU</th>
+                                    <th><center>Nama Barang</th>
                                     <th><center>Stok Barang</th>
                                     <th><center>Minimal Stok</th>
                                     <th><center>Harga Beli</th>

@@ -14,24 +14,53 @@
             </div>
             <div class="box-body">
             <div class="table-responsive">
-                
                 <table class="table table-stripped">
                     <tbody>
                         <tr>
-                            <th>Barcode</th>
-                            <td>:</td>
-                            <td>{!! \DNS1D::getBarcodeHTML("$dt->sku", "I25+")!!}</td>
+                            <img src="images/{{ Session::get('foto') }}" class="img-responsive" style="height: 1000px; width: 1215px; border-radius: 50%;">
                         </tr>
                         <tr>
                             <th>Supplier</th>
                             <td>:</td>
                             <td>{{$dt->suppliers->nama}}</td>
+                            
+                            <th>SKU</th>
+                            <td>:</td>
+                            <td>{{$dt->sku}}</td>
                         </tr>
 
                         <tr>
-                        <th>Nama Barang</th>
+                            <th>Nama Barang</th>
                             <td>:</td>
                             <td>{{$dt->nama_barang}}</td>
+
+                            <th>Harga Jual</th>
+                            <td>:</td>
+                            <td>Rp.{{ number_format($dt->harga_beli, 2) }}</td>
+                        </tr>
+                    
+                        <tr>
+                            <th>Minimal Stok</th>
+                            <td>:</td>
+                            <td>{{$dt->minimal_stok}}</td>
+
+                            <th>Stok Barang</th>
+                            <td>:</td>
+                            <td>{{$dt->stok}}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Created At</th>
+                            <td>:</td>
+                            <td>{{$dt->created_at}}</td>
+
+                            <th>Updated_at</th>
+                            <td>:</td>
+                            <td>{{$dt->updated_at}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="75px">{!! \DNS2D::getBarcodeHTML("$dt->sku", "QRCODE")!!}</td>
                         </tr>
                     </tbody>
                 </table>

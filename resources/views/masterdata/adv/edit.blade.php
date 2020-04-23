@@ -61,6 +61,13 @@
                   <label for="harga">Harga Jual</label>
                   <input type="number" name="harga_jual" class="form-control" value="{{ $dt->harga_jual }}" placeholder="Harga Jual" min="1" required autocomplete="off">
                 </div>
+
+                <div class="form-group">
+                    <label>Pilih file jpg/jpeg/png</label>
+                    <div class="form-group">
+                        <input type="file" name="foto" value="{{ $dt->foto }}" required="required" autocomplete="off">
+                    </div>
+                </div>
                
               </div>
               <!-- /.box-body -->

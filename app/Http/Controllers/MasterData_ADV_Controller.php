@@ -33,7 +33,7 @@ class MasterData_ADV_Controller extends Controller
         //
         $title = 'Tambah Stok Barang ADV';
         $supplier = M_Supplier::get();
-        $sku = date('ymds');
+        $sku = date('ydms');
 
         return view('masterdata/adv.add', compact('title', 'supplier', 'sku'));
     }
@@ -54,12 +54,19 @@ class MasterData_ADV_Controller extends Controller
             'minimal_stok'=> 'required',
             'harga_beli'       => 'required',
             'harga_jual'       => 'required',
+            'foto'        => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $data = $request->except(['_token']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
+        $dataa['foto'] = 'required|image|mimes:jpeg,png,jpg';
         $data['stok'] = 0;
+        if($request->hasFile($dataa)){
+            $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+            $data->save();
+        }
 
         M_MData_ADV::insert($data);
 
@@ -118,11 +125,18 @@ class MasterData_ADV_Controller extends Controller
             'minimal_stok'=> 'required',
             'harga_beli'       => 'required',
             'harga_jual'       => 'required',
+            'foto'        => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $data = $request->except(['_token', '_method']);
         //$data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
+        $dataa['foto'] = 'required|image|mimes:jpeg,png,jpg';
+        if($request->hasFile($dataa)){
+            $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+            $data->save();
+        }
 
         M_MData_ADV::where('id', $id)->update($data);
 

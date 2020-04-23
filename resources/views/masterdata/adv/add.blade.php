@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <form role="form" method="POST" action="{{ url('Stok-Barang-ADV')}}" >
+            <form role="form" method="POST" action="{{ url('Stok-Barang-ADV')}}" enctype="multipart/form-data" >
                 @csrf
               <div class="box-body">
                 
@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                   <label>SKU</label>
-                  <input type="text" name="sku" class="form-control" readonly value="ADV-{{ $sku }}" placeholder="SKU Barang" required autocomplete="off">
+                  <input type="text" name="sku" class="form-control" readonly value="ADV{{ $sku }}" placeholder="SKU Barang" required autocomplete="off">
                 </div>
                 
                 <div class="form-group">
@@ -60,6 +60,13 @@
                 <div class="form-group">
                   <label for="harga">Harga Jual</label>
                   <input type="number" name="harga_jual" class="form-control" placeholder="Harga Jual" min="1" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label>Pilih file jpg/jpeg/png</label>
+                    <div class="form-group">
+                        <input type="file" name="foto" required="required" autocomplete="off">
+                    </div>
                 </div>
                
               </div>

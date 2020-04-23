@@ -23,6 +23,7 @@ class CreateTableMasterdataOrokkids extends Migration
             $table->integer('minimal_stok');
             $table->integer('harga_beli');
             $table->integer('harga_jual');
+            $table->string('foto');
             $table->timestamps();
 
             $table->foreign('supplier')->references('id')->on('m_supplier')->onDelete('restrict');
