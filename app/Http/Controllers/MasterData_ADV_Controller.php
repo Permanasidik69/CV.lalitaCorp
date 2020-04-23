@@ -51,14 +51,15 @@ class MasterData_ADV_Controller extends Controller
             'supplier'    => 'required',
             'sku'         => 'required',
             'nama_barang' => 'required',
-            'stok'        => 'required',
             'minimal_stok'=> 'required',
-            'harga'       => 'required',
+            'harga_beli'       => 'required',
+            'harga_jual'       => 'required',
         ]);
 
         $data = $request->except(['_token']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['stok'] = 0;
 
         M_MData_ADV::insert($data);
 
@@ -75,6 +76,12 @@ class MasterData_ADV_Controller extends Controller
     public function show($id)
     {
         //
+        $title = "Detail Barang ADV";
+        $dt = M_MData_ADV::find($id);
+
+        return view('masterdata/adv.detail', compact('dt', 'title'));
+
+
     }
 
     /**
@@ -108,9 +115,9 @@ class MasterData_ADV_Controller extends Controller
             'supplier'    => 'required',
             'sku'         => 'required',
             'nama_barang' => 'required',
-            'stok'        => 'required',
             'minimal_stok'=> 'required',
-            'harga'       => 'required',
+            'harga_beli'       => 'required',
+            'harga_jual'       => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);

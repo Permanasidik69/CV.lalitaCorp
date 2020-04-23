@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                   <label>SKU</label>
-                  <input type="text" name="sku" class="form-control" value="HBM-{{ $sku }}" placeholder="SKU Barang" required autocomplete="off">
+                  <input type="text" name="sku" class="form-control" value="HBM-{{ $sku }}" placeholder="SKU Barang" readonly required autocomplete="off">
                 </div>
                 
                 <div class="form-group">
@@ -48,18 +48,18 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Stok Barang</label>
-                  <input type="number" name="stok" class="form-control" placeholder="Stok Barang" min="1" required autocomplete="off">
-                </div>
-
-                <div class="form-group">
                   <label for="minimal_stok">Minimal Stok</label>
                   <input type="number" name="minimal_stok" class="form-control" placeholder="Minimal Stok" min="1" required autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="harga">Harga</label>
-                  <input type="number" name="harga" class="form-control" placeholder="Harga" min="1" required autocomplete="off">
+                  <label for="harga">Harga Beli</label>
+                  <input type="number" name="harga_beli" class="form-control" placeholder="Harga Beli" min="1" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                  <label for="harga">Harga Jual</label>
+                  <input type="number" name="harga_jual" class="form-control" placeholder="Harga Jual" min="1" required autocomplete="off">
                 </div>
                
               </div>

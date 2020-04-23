@@ -48,18 +48,18 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Stok Barang</label>
-                  <input type="number" name="stok" class="form-control" value="{{ $dt->stok }}" placeholder="Stok Barang" min="1" required autocomplete="off">
-                </div>
-
-                <div class="form-group">
                   <label for="minimal_stok">Minimal Stok</label>
                   <input type="number" name="minimal_stok" class="form-control" value="{{ $dt->minimal_stok }}" placeholder="Minimal Stok" min="1" required autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="harga">Harga</label>
-                  <input type="number" name="harga" class="form-control" value="{{ $dt->harga }}" placeholder="Harga" min="1" required autocomplete="off">
+                  <label for="harga">Harga Beli</label>
+                  <input type="number" name="harga_beli" class="form-control" value="{{ $dt->harga_beli }}" placeholder="Harga Beli" min="1" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                  <label for="harga">Harga Jual</label>
+                  <input type="number" name="harga_jual" class="form-control" value="{{ $dt->harga_jual }}" placeholder="Harga Jual" min="1" required autocomplete="off">
                 </div>
                
               </div>

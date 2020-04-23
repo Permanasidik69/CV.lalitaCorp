@@ -54,7 +54,8 @@
                                     <th><center>Nama Barang</th>
                                     <th><center>Stok Barang</th>
                                     <th><center>Minimal Stok</th>
-                                    <th><center>Harga</th>
+                                    <th><center>Harga Beli</th>
+                                    <th><center>Harga Jual</th>
                                     <th><center>Created_at</th>
                                 </tr>
                             </thead>
@@ -62,9 +63,12 @@
                                 @foreach($data as $e=>$dt)
                                 <tr align="center">
                                     <td>
-                                        <div style="width:60px">
-                                            <a href="{{ url('Stok-Barang-ADV/'. $dt->id. '/edit') }}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a> 
+                                        <div style="width:80px">
+                                            <a href="{{ url('Stok-Barang-ADV/'. $dt->id. '/edit') }}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a>
+
                                             <button href="{{ url('Stok-Barang-ADV/'. $dt->id) }}" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
+
+                                            <a href="{{ url('Stok-Barang-ADV/'. $dt->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                                         </div>
                                     </td>
                                     <td>{{$e+1}}</td>
@@ -73,7 +77,8 @@
                                     <td>{{$dt->nama_barang}}</td>
                                     <td>{{$dt->stok}}</td>
                                     <td>{{$dt->minimal_stok}}</td>
-                                    <td>Rp.{{ number_format($dt->harga, 2) }}</td>
+                                    <td>Rp.{{ number_format($dt->harga_beli, 2) }}</td>
+                                    <td>Rp.{{ number_format($dt->harga_jual, 2) }}</td>
                                     <td>{{$dt->updated_at}}</td>
                                 </tr>
                                 @endforeach

@@ -50,14 +50,15 @@ class MasterData_OROKKIDS_Controller extends Controller
             'supplier'    => 'required',
             'sku'         => 'required',
             'nama_barang' => 'required',
-            'stok'        => 'required',
             'minimal_stok'=> 'required',
-            'harga'       => 'required',
+            'harga_beli'       => 'required',
+            'harga_jual'       => 'required',
         ]);
 
         $data = $request->except(['_token']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
+        $data['stok'] = 0;
 
         M_MData_OROKKIDS::insert($data);
 
@@ -107,9 +108,9 @@ class MasterData_OROKKIDS_Controller extends Controller
             'supplier'    => 'required',
             'sku'         => 'required',
             'nama_barang' => 'required',
-            'stok'        => 'required',
             'minimal_stok'=> 'required',
-            'harga'       => 'required',
+            'harga_beli'       => 'required',
+            'harga_jual'       => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);

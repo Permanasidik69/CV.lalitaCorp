@@ -21,7 +21,8 @@ class CreateTableMasterdataHobimen extends Migration
             $table->string('sku',30);
             $table->integer('stok');
             $table->integer('minimal_stok');
-            $table->integer('harga');
+            $table->integer('harga_beli');
+            $table->integer('harga_jual');
             $table->timestamps();
 
             $table->foreign('supplier')->references('id')->on('m_supplier')->onDelete('restrict');

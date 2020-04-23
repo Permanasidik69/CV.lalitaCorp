@@ -54,7 +54,8 @@
                                     <th><center>SKU</th>
                                     <th><center>Stok Barang</th>
                                     <th><center>Minimal Stok</th>
-                                    <th><center>Harga</th>
+                                    <th><center>Harga Beli</th>
+                                    <th><center>Harga Jual</th>
                                     <th><center>Created_at</th>
                                 </tr>
                             </thead>
@@ -73,7 +74,8 @@
                                     <td>{{$dt->nama_barang}}</td>
                                     <td>{{$dt->stok}}</td>
                                     <td>{{$dt->minimal_stok}}</td>
-                                    <td>Rp.{{ number_format($dt->harga, 2) }}</td>
+                                    <td>Rp.{{ number_format($dt->harga_beli, 2) }}</td>
+                                    <td>Rp.{{ number_format($dt->harga_jual, 2) }}</td>
                                     <td>{{$dt->updated_at}}</td>
                                 </tr>
                                 @endforeach
