@@ -46,6 +46,7 @@ class MasterData_HOBIMEN_Controller extends Controller
     public function store(Request $request)
     {
         //
+
         $this->validate($request, [
             'supplier'    => 'required',
             'sku'         => 'required',
@@ -53,17 +54,30 @@ class MasterData_HOBIMEN_Controller extends Controller
             'minimal_stok'=> 'required',
             'harga_beli'       => 'required',
             'harga_jual'       => 'required',
+            'foto'        => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
-        $data = $request->except(['_token']);
+        $data = $request->file('foto');
+
+        $upload = rand() . '.' . $data->getClientOriginalExtension();
+        $data->move(public_path('images'), $upload);
+        $data = array(
+            'supplier'  => $request->supplier,
+            'sku'  => $request->sku,
+            'nama_barang'  => $request->nama_barang,
+            'minimal_stok'  => $request->minimal_stok,
+            'harga_beli'  => $request->harga_beli,
+            'harga_jual'  => $request->harga_jual,
+            'foto'  => $upload,
+            'stok'  => 0,
+        );
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $data['stok'] = 0;
-
         M_MData_HOBIMEN::insert($data);
 
         \Session::flash('sukses', 'Data Berhasil diTambahkan');
         return redirect('Stok-Barang-HOBIMEN');
+
     }
 
     /**
@@ -75,6 +89,10 @@ class MasterData_HOBIMEN_Controller extends Controller
     public function show($id)
     {
         //
+        $title = "Detail Barang HOBIMEN";
+        $dt = M_MData_HOBIMEN::find($id);
+
+        return view('masterdata/hobimen.detail', compact('dt', 'title'));
     }
 
     /**
@@ -104,20 +122,49 @@ class MasterData_HOBIMEN_Controller extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            'supplier'    => 'required',
-            'sku'         => 'required',
-            'nama_barang' => 'required',
-            'minimal_stok'=> 'required',
-            'harga_beli'       => 'required',
-            'harga_jual'       => 'required',
-        ]);
+        $upload = $request->hidden_image;
+        $data = $request->file('foto');
+        if($data != ''){
+            
+            $request->validate([
+                'supplier'    => 'required',
+                'sku'         => 'required',
+                'nama_barang' => 'required',
+                'minimal_stok'=> 'required',
+                'harga_beli'  => 'required',
+                'harga_jual'  => 'required',
+                'foto'        => 'image|mimes:jpeg,png,jpg',
+               
+            ]);
 
-        $data = $request->except(['_token', '_method']);
-        //$data['created_at'] = date('Y-m-d H:i:s');
-        $data['updated_at'] = date('Y-m-d H:i:s');
+            $upload = rand() . '.' . $data->getClientOriginalExtension();
+            $data->move(public_path('images'), $upload);
+        }
+        else{
+            $request->validate([
+                'supplier'    => 'required',
+                'sku'         => 'required',
+                'nama_barang' => 'required',
+                'minimal_stok'=> 'required',
+                'harga_beli'  => 'required',
+                'harga_jual'  => 'required',
+                'foto'        => 'image|mimes:jpeg,png,jpg',
+               
+            ]);
+        }
 
-        M_MData_HOBIMEN::where('id', $id)->update($data);
+        $data = array(
+            'supplier'  => $request->supplier,
+            'sku'  => $request->sku,
+            'nama_barang'  => $request->nama_barang,
+            'minimal_stok'  => $request->minimal_stok,
+            'harga_beli'  => $request->harga_beli,
+            'harga_jual'  => $request->harga_jual,
+            'foto'  => $upload,
+            'stok'  => 0,
+        );
+
+        M_MData_HOBIMEN::whereId($id)->update($data);
 
         \Session::flash('sukses', 'Data Berhasil diEdit');
         return redirect('Stok-Barang-HOBIMEN');

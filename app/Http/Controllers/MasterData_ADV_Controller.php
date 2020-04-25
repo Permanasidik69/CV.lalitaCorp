@@ -57,17 +57,22 @@ class MasterData_ADV_Controller extends Controller
             'foto'        => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
-        $data = $request->except(['_token']);
+        $data = $request->file('foto');
+
+        $upload = rand() . '.' . $data->getClientOriginalExtension();
+        $data->move(public_path('images'), $upload);
+        $data = array(
+            'supplier'  => $request->supplier,
+            'sku'  => $request->sku,
+            'nama_barang'  => $request->nama_barang,
+            'minimal_stok'  => $request->minimal_stok,
+            'harga_beli'  => $request->harga_beli,
+            'harga_jual'  => $request->harga_jual,
+            'foto'  => $upload,
+            'stok'  => 0,
+        );
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $dataa['foto'] = 'required|image|mimes:jpeg,png,jpg';
-        $data['stok'] = 0;
-        if($request->hasFile($dataa)){
-            $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
-            $data->foto = $request->file('foto')->getClientOriginalName();
-            $data->save();
-        }
-
         M_MData_ADV::insert($data);
 
         \Session::flash('sukses', 'Data Berhasil diTambahkan');
@@ -118,27 +123,49 @@ class MasterData_ADV_Controller extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            'supplier'    => 'required',
-            'sku'         => 'required',
-            'nama_barang' => 'required',
-            'minimal_stok'=> 'required',
-            'harga_beli'       => 'required',
-            'harga_jual'       => 'required',
-            'foto'        => 'required|image|mimes:jpeg,png,jpg',
-        ]);
+        $upload = $request->hidden_image;
+        $data = $request->file('foto');
+        if($data != ''){
+            
+            $request->validate([
+                'supplier'    => 'required',
+                'sku'         => 'required',
+                'nama_barang' => 'required',
+                'minimal_stok'=> 'required',
+                'harga_beli'  => 'required',
+                'harga_jual'  => 'required',
+                'foto'        => 'image|mimes:jpeg,png,jpg',
+               
+            ]);
 
-        $data = $request->except(['_token', '_method']);
-        //$data['created_at'] = date('Y-m-d H:i:s');
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $dataa['foto'] = 'required|image|mimes:jpeg,png,jpg';
-        if($request->hasFile($dataa)){
-            $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
-            $data->foto = $request->file('foto')->getClientOriginalName();
-            $data->save();
+            $upload = rand() . '.' . $data->getClientOriginalExtension();
+            $data->move(public_path('images'), $upload);
+        }
+        else{
+            $request->validate([
+                'supplier'    => 'required',
+                'sku'         => 'required',
+                'nama_barang' => 'required',
+                'minimal_stok'=> 'required',
+                'harga_beli'  => 'required',
+                'harga_jual'  => 'required',
+                'foto'        => 'image|mimes:jpeg,png,jpg',
+               
+            ]);
         }
 
-        M_MData_ADV::where('id', $id)->update($data);
+        $data = array(
+            'supplier'  => $request->supplier,
+            'sku'  => $request->sku,
+            'nama_barang'  => $request->nama_barang,
+            'minimal_stok'  => $request->minimal_stok,
+            'harga_beli'  => $request->harga_beli,
+            'harga_jual'  => $request->harga_jual,
+            'foto'  => $upload,
+            'stok'  => 0,
+        );
+
+        M_MData_ADV::whereId($id)->update($data);
 
         \Session::flash('sukses', 'Data Berhasil diEdit');
         return redirect('Stok-Barang-ADV');

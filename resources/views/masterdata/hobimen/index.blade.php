@@ -49,6 +49,7 @@
                                 <tr>
                                     <th><center>Action</th>
                                     <th><center>No</th>
+                                    <th><center>Foto Barang</th>
                                     <th><center>Supplier</th>
                                     <th><center>SKU</th>
                                     <th><center>Nama Barang</th>
@@ -63,12 +64,16 @@
                                 @foreach($data as $e=>$dt)
                                 <tr align="center">
                                     <td>
-                                        <div style="width:60px">
+                                        <div style="width:80px">
                                             <a href="{{ url('Stok-Barang-HOBIMEN/'. $dt->id. '/edit') }}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a> 
+                                            
                                             <button href="{{ url('Stok-Barang-HOBIMEN/'. $dt->id) }}" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
+
+                                            <a href="{{ url('Stok-Barang-HOBIMEN/'. $dt->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                                         </div>
                                     </td>
                                     <td>{{$e+1}}</td>
+                                    <td><img src="{{ URL::to('/') }}/images/{{$dt->foto}}" class="img-thumbnail" width="65px"></td>
                                     <td>{{$dt->suppliers->nama}}</td>
                                     <td>{{$dt->sku}}</td>
                                     <td>{{$dt->nama_barang}}</td>

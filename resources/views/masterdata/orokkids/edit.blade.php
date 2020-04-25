@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <form role="form" method="POST" action="{{ url('Stok-Barang-OROKKIDS/'.$dt->id)}}" >
+            <form role="form" method="POST" action="{{ url('Stok-Barang-OROKKIDS/'.$dt->id)}}" enctype="multipart/form-data">
             @csrf {{ method_field('PUT') }}
               <div class="box-body">
                 
@@ -60,6 +60,13 @@
                 <div class="form-group">
                   <label for="harga">Harga Jual</label>
                   <input type="number" name="harga_jual" class="form-control" value="{{ $dt->harga_jual }}" placeholder="Harga Jual" min="1" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                  <label>Pilih file jpg/jpeg/png</label>
+                  <input type="file" name="foto">
+                  <img src="{{ URL::to('/') }}/images/{{ $dt->foto }}" class="img-thumbnail" width="100">
+                  <input type="hidden" name="hidden_image" value="{{ $dt->foto }}">
                 </div>
                
               </div>

@@ -49,6 +49,7 @@
                                 <tr>
                                     <th><center>Action</th>
                                     <th><center>No</th>
+                                    <th><center>Foto Barang</th>
                                     <th><center>Supplier</th>
                                     <th><center>SKU</th>
                                     <th><center>Nama Barang</th>
@@ -72,6 +73,7 @@
                                         </div>
                                     </td>
                                     <td>{{$e+1}}</td>
+                                    <td><img src="{{ URL::to('/') }}/images/{{$dt->foto}}" class="img-thumbnail" width="65px"></td>
                                     <td>{{$dt->suppliers->nama}}</td>
                                     <td>{{$dt->sku}}</td>
                                     <td>{{$dt->nama_barang}}</td>
