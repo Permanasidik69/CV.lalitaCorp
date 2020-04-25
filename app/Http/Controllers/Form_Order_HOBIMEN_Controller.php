@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\M_Form_Order_HOBIMEN;
 
-class Form_Order_Controller extends Controller
+class Form_Order_HOBIMEN_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,10 @@ class Form_Order_Controller extends Controller
     public function index()
     {
         //
-        $title="Form Order Barang";
+        $title = "Purchase Order HOBIMEN";
+        $data = M_Form_Order_HOBIMEN::orderBy('nama_barang', 'asc')->get();
 
-        return view('orderbarang/formorder.index',compact('title'));
+        return view('orderbarang/formhobimen.index', compact('title', 'data'));
     }
 
     /**
