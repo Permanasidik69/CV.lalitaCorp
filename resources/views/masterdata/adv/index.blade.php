@@ -81,7 +81,7 @@
                                     <td>{{$dt->minimal_stok}}</td>
                                     <td>Rp.{{ number_format($dt->harga_beli, 2) }}</td>
                                     <td>Rp.{{ number_format($dt->harga_jual, 2) }}</td>
-                                    <td>{{$dt->updated_at}}</td>
+                                    <td>{{ date('d M Y', strtotime($dt->updated_at )) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

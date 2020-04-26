@@ -40,7 +40,7 @@
                                 <td>{{ $dt->nama }}</td>
                                 <td>{{ $dt->no_telp }}</td>
                                 <td>{{ $dt->alamat }}</td>
-                                <td>{{ $dt->updated_at }}</td>
+                                <td>{{ date('d M Y', strtotime($dt->updated_at )) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -8,4 +8,5 @@ class M_Form_Order_OROKKIDS extends Model
 {
     //
     protected $table = 'form_orokkids';
+    
 }
