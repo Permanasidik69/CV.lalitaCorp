@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\M_Form_Order_ATK;
 
 class Form_Order_ATK_Controller extends Controller
 {
@@ -14,6 +15,10 @@ class Form_Order_ATK_Controller extends Controller
     public function index()
     {
         //
+        $title = "Purchase Order ATK";
+        $data = M_Form_Order_ATK::orderBy('nama_barang', 'asc')->get();
+
+        return view('orderbarang/formatk.index', compact('title', 'data'));
     }
 
     /**

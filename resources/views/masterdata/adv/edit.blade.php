@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                   <label for="minimal_stok">Minimal Stok</label>
-                  <input type="number" name="minimal_stok" class="form-control" value="{{ $dt->minimal_stok }}" placeholder="Minimal Stok" min="1" required autocomplete="off">
+                  <input type="number" min="1" name="minimal_stok" class="form-control" value="{{ $dt->minimal_stok }}" placeholder="Minimal Stok" required autocomplete="off">
                 </div>
 
                 <div class="form-group">

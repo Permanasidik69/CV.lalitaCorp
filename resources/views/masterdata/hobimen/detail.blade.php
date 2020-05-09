@@ -35,7 +35,7 @@
 
                             <th>Harga Jual</th>
                             <td>:</td>
-                            <td>Rp.{{ number_format($dt->harga_beli, 2) }}</td>
+                            <td>Rp.{{ number_format($dt->harga_jual, 2) }}</td>
                         </tr>
                     
                         <tr>

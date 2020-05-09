@@ -21,7 +21,7 @@ class CreateTableFormHobimen extends Migration
             $table->integer('sku')->unsigned();
             $table->integer('harga_beli')->unsigned();
             $table->integer('qty');
-            $table->integer('keterangan');
+            $table->text('keterangan');
             $table->timestamps();
 
             $table->foreign('supplier')->references('id')->on('m_supplier')->onDelete('restrict');
